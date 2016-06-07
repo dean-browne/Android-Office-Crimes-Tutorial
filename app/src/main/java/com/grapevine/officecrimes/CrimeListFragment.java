@@ -1,6 +1,5 @@
 package com.grapevine.officecrimes;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,11 +12,8 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.UUID;
 
 public class CrimeListFragment extends Fragment {
-    // This is just a string we use when we pass the extra in the intent
-
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
 
@@ -34,13 +30,27 @@ public class CrimeListFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
     // Uses the adapter & the ViewHolder to update the UI
     private void updateUI() {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         List<Crime> crimes = crimeLab.getCrimes();
 
-        mAdapter = new CrimeAdapter(crimes);
-        mCrimeRecyclerView.setAdapter(mAdapter);
+        if(mAdapter == null) {
+            mAdapter = new CrimeAdapter(crimes);
+            mCrimeRecyclerView.setAdapter(mAdapter);
+        }
+        else {
+            // Updates any changes made to the data set
+            mAdapter.notifyDataSetChanged();
+        }
+
+
     }
 
     // Inner class to define a viewHolder
@@ -67,7 +77,7 @@ public class CrimeListFragment extends Fragment {
         // For now make a toast when we click the viewHolder
         @Override
         public void onClick(View v) {
-            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getmId());
+            Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getmId());
             startActivity(intent);
         }
 
