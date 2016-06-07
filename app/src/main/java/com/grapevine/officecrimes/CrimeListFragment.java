@@ -1,5 +1,7 @@
 package com.grapevine.officecrimes;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,11 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
+import java.util.UUID;
 
 public class CrimeListFragment extends Fragment {
+    // This is just a string we use when we pass the extra in the intent
+
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
 
@@ -63,8 +67,8 @@ public class CrimeListFragment extends Fragment {
         // For now make a toast when we click the viewHolder
         @Override
         public void onClick(View v) {
-            Toast.makeText(getActivity(), mCrime.getmTitle() + " clicked", Toast.LENGTH_SHORT)
-                    .show();
+            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getmId());
+            startActivity(intent);
         }
 
         public void bindCrime(Crime crime) {
