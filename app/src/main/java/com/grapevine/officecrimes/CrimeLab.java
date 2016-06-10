@@ -27,7 +27,6 @@ public class CrimeLab {
             crime.setmTitle("Crime # " + i);
             crime.setmSolved(i % 2 == 0);   // Every second one
             mCrimes.add(crime);
-            Log.d("[+] CrimeLab", "Created " + mCrimes.size());
         }
     }
 
