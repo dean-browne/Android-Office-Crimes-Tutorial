@@ -20,14 +20,6 @@ public class CrimeLab {
     private CrimeLab(Context context) {
         // We do not make use of the context object until chapter 14
         mCrimes = new ArrayList<>();
-
-        // Create 100 fake crimes to populate the list
-        for(int i = 0; i < 100; i++) {
-            Crime crime = new Crime();
-            crime.setmTitle("Crime # " + i);
-            crime.setmSolved(i % 2 == 0);   // Every second one
-            mCrimes.add(crime);
-        }
     }
 
     // Returns a list of all the crimes
@@ -43,5 +35,10 @@ public class CrimeLab {
             }
         }
         return null;
+    }
+
+    // Creates a new Crime based on the crime passed in
+    public void addCrime(Crime c) {
+        mCrimes.add(c);
     }
 }
