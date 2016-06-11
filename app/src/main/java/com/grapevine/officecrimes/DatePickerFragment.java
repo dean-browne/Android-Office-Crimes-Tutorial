@@ -1,6 +1,6 @@
 /*
 * Todo Take a look back on page 233 to see if i can do the second challenge
-* *
+*
  */
 
 package com.grapevine.officecrimes;

@@ -62,8 +62,7 @@ public class Crime {
         this.mSolved = mSolved;
     }
 
-    // TODO -> these are for testing only at the moment
-    // Get the time
+    // These are never used so maybe we can remove them?
     public int getHourOfDay() {
         return calendar.get(Calendar.HOUR_OF_DAY);
     }

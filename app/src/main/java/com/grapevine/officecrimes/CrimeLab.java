@@ -41,4 +41,14 @@ public class CrimeLab {
     public void addCrime(Crime c) {
         mCrimes.add(c);
     }
+
+    // Deletes a new Crime based on the id passed in
+    public void deleteCrime(UUID id) {
+        for(Crime crime : mCrimes) {
+            if(crime.getmId().equals(id)) {
+                // Delete it
+                mCrimes.remove(crime);
+            }
+        }
+    }
 }
