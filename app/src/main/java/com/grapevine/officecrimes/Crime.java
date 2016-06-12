@@ -15,9 +15,11 @@ public class Crime {
     private boolean mSolved;
 
     public Crime() {
-        // Generate unique identifier
-        mId = UUID.randomUUID();
-        // Sets date to the current date
+        this(UUID.randomUUID());
+    }
+
+    public Crime(UUID id) {
+        mId = id;
         mDate = new Date();
         calendar.setTime(mDate);
     }
@@ -62,12 +64,4 @@ public class Crime {
         this.mSolved = mSolved;
     }
 
-    // These are never used so maybe we can remove them?
-    public int getHourOfDay() {
-        return calendar.get(Calendar.HOUR_OF_DAY);
-    }
-
-    public int getMinutes() {
-        return calendar.get(Calendar.MINUTE);
-    }
 }
